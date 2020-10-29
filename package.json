@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.0",
     "dayjs": "^1.8.16",
     "jwt-decode": "^2.2.0",
     "material-ui": "^1.0.0-beta.47",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
@@ -21,6 +23,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "wesbos"
   },
   "browserslist": {
     "production": [

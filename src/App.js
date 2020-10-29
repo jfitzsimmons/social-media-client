@@ -6,7 +6,7 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import jwtDecode from 'jwt-decode';
 import { Provider } from 'react-redux';
 import axios from 'axios';
-import themeFile from './util/theme';
+import themeFile from "./util/theme";
 
 // redux
 import store from './redux/store';
@@ -27,12 +27,12 @@ const token = localStorage.FBIdToken;
 
 if (token) {
   const decodedToken = jwtDecode(token);
-  if (decodedToken.sxp * 1000 < Date.now()) {
+  if (decodedToken.exp * 1000 < Date.now()) {
     store.dispatch(logoutUser());
     window.location.href = '/login';
   } else {
-    store.dispatch({ type: 'SET_AUTHENTICATED' });
-    axios.defaults.headers.common.Authorization = token;
+    store.dispatch({ type: SET_AUTHENTICATED });
+    axios.defaults.headers.common['Authorization'] = token;
     store.dispatch(getUserData());
   }
 }
