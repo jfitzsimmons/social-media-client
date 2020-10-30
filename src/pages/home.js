@@ -13,7 +13,9 @@ function Home(props) {
       .then((res) => {
         setScreams(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch
+      // (err) => console.error(err)
+      ();
   }, []);
 
   const recentScreamsMarkup = screams ? (

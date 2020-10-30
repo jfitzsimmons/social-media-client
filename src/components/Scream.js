@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
@@ -49,5 +51,10 @@ class Scream extends Component {
     );
   }
 }
+
+Scream.propTypes = {
+  scream: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(Scream);

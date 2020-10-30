@@ -14,7 +14,7 @@
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "4.0.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   },
@@ -41,6 +41,8 @@
   },
   "proxy": "https://us-central1-vue-mvp-f835d.cloudfunctions.net/api",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-wesbos": "1.0.1",
