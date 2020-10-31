@@ -1,4 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
+/* eslint-disable no-console */
+import React, { Component, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -24,29 +25,39 @@ function Login(props) {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
 
+  const [inputs, setInputs] = useState({
+    email: '',
+    password: '',
+  });
+
   const {
     classes,
+    UI,
     UI: { loading },
   } = props;
   // const { errors } = state;
 
+  const didMountRef = useRef(false);
   useEffect(() => {
-    // const {UI} = props;
-    setErrors(props.UI.errors);
-  }, [errors]);
+    setErrors(UI.errors);
+  }, [UI.errors]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const userData = {
-      email,
-      password,
+      email: inputs.email,
+      password: inputs.password,
     };
     props.loginUser(userData, props.history);
   };
 
-  const handleChange = (event) => {
-    [event.target.name](event.target.value);
+  const handleChange = (e) => {
+    console.log(`e.target.name: ${e.target.name} | e.target.value: ${e.target.value}`);
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -64,7 +75,7 @@ function Login(props) {
             type="email"
             label="email"
             className={classes.textField}
-            value={email}
+            value={inputs.email}
             onChange={handleChange}
             helperText={errors.email}
             error={!!errors.email}
@@ -76,7 +87,7 @@ function Login(props) {
             type="password"
             label="password"
             className={classes.textField}
-            value={password}
+            value={inputs.password}
             onChange={handleChange}
             helperText={errors.password}
             error={!!errors.password}
@@ -105,7 +116,8 @@ function Login(props) {
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
   loginUser: PropTypes.func.isRequired,
-  // user: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
+  user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
   history: PropTypes.array.isRequired,
 };

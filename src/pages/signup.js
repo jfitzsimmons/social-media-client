@@ -34,7 +34,8 @@ function Signup(props) {
 
   useEffect(() => {
     setErrors(props.UI.errors);
-  });
+    // eslint-disable-next-line react/destructuring-assignment
+  }, [props.UI.errors]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
