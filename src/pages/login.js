@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { Component, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -39,7 +38,9 @@ function Login(props) {
 
   const didMountRef = useRef(false);
   useEffect(() => {
-    setErrors(UI.errors);
+    if (didMountRef.current) {
+      setErrors(UI.errors);
+    } else didMountRef.current = true;
   }, [UI.errors]);
 
   const handleSubmit = (event) => {
@@ -53,7 +54,6 @@ function Login(props) {
   };
 
   const handleChange = (e) => {
-    console.log(`e.target.name: ${e.target.name} | e.target.value: ${e.target.value}`);
     setInputs({
       ...inputs,
       [e.target.name]: e.target.value,
