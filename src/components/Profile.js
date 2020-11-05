@@ -17,9 +17,11 @@ import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import EditIcon from '@material-ui/icons/Edit';
+import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 
 import { connect } from 'react-redux';
 import dayjs from 'dayjs';
+import EditDetails from './EditDetails';
 import { logoutUser, uploadImage } from '../redux/actions/userActions';
 
 const styles = {
@@ -83,6 +85,10 @@ function Profile(props) {
     fileInput.click();
   };
 
+  const handleLogout = () => {
+    props.logoutUser();
+  };
+
   const profileMarkup = !loading ? (
     authenticated ? (
       <Paper className={classes.paper}>
@@ -126,6 +132,12 @@ function Profile(props) {
             )}
             <CalendarToday color="primary" /> <span>Joined {dayjs(createdAt).format('MMM YYYY')} </span>
           </div>
+          <Tooltip title="Logout" placement="top">
+            <IconButton onClick={handleLogout} className="button">
+              <KeyboardReturn color="primary" />
+            </IconButton>
+          </Tooltip>
+          <EditDetails />
         </div>
       </Paper>
     ) : (

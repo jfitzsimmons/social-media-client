@@ -136,7 +136,7 @@ Signup.propTypes = {
   signupUser: PropTypes.func.isRequired,
   // user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
-  history: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
