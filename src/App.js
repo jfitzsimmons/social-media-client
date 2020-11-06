@@ -14,11 +14,11 @@ import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser, getUserData } from './redux/actions/userActions';
 
 // components
-import { NavHeader } from './components/NavHeader';
+import NavHeader from './components/NavHeader';
 import AuthRoute from './util/AuthRoute';
 
 // pages
-import home from './pages/home';
+import home from './pages/Home';
 import login from './pages/login';
 import signup from './pages/signup';
 
